@@ -1,5 +1,5 @@
-from copy import deepcopy, copy
-from abc import ABC, abstractmethod
+from copy import deepcopy
+from abc import ABC
 
 
 class Cargo:
@@ -12,12 +12,11 @@ class Cargo:
 
 
 class Order(ABC):
-    @abstractmethod
-    def ride(self):
-        pass
+    pass
+
 
 class Prototype(Order):
-    def __init__(self, price, cargo: Cargo, description):
+    def __init__(self, cargo: Cargo, price, description):
         self.price = price
         self.cargo = cargo
         self.description = description
@@ -27,9 +26,9 @@ class Prototype(Order):
 
 
 if __name__ == "__main__":
-    order1 = Prototype(Cargo(3.5, 4), 5)
+    order1 = Prototype(Cargo(3.5, 4), 5, "some")
     order2 = deepcopy(order1)
-    order2.price = "R8"
+    order2.price = 10
     order2.cargo.weight = 5.0
     print(order1)
     print(order2)
