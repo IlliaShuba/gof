@@ -1,18 +1,9 @@
 class Order:
     def __init__(self, order_type, description, price):
-        self.type = order_type
+        self.order_type = order_type
         self.description = description
         self.price = price
         self._status = "Running"
-
-    def start_meeting(self):
-        self._status = "Running"
-        print(self._type + " Running " + self._type)
-
-    def finish_meeting(self):
-        print(self._title + " Finished " + self._type)
-        self._status = "Ready"
-        self._title = ""
 
     def is_ready(self):
         return self._status == "Ready"

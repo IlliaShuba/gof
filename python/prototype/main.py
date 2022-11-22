@@ -22,7 +22,7 @@ class Prototype(Order):
         self.description = description
 
     def __str__(self):
-        return f"prototype "
+        return f"prototype description:{self.description} price:{self.price} weight:{self.cargo.weight}"
 
 
 if __name__ == "__main__":

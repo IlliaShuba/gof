@@ -5,10 +5,10 @@ public class Main {
         Order order2 = order1.clone();
         System.out.println(order1.getPrice());
         System.out.println(order1.getCargo().getVolume());
-        System.out.println("\n");
-        System.out.println(order2.getDescription());
+        System.out.print("\n");
+        System.out.println(order2.getPrice());
         System.out.println(order2.getCargo().getVolume());
-        System.out.println("\n");
+        System.out.print("\n");
 
         order2.getCargo().setVolume(5.0);
         order2.getCargo().setWeight(400);
