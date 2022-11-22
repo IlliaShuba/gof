@@ -1,104 +1,99 @@
 from abc import ABC, abstractmethod
 
 
-class AbstractButton(ABC):
-    """
-    Abstract class for realisation Button element on different OS
-    """
-    def __init__(self, system):
-        self._system = system
+class Cargo(ABC):
+    def __init__(self, type):
+        self._type = type
 
     @abstractmethod
     def create(self):
         pass
 
 
-class AbstractCheckBox(ABC):
-    """
-    Abstract class for realisation Checkbox button of different OS
-    """
-    def __init__(self, system):
-        self._system = system
+class Office(ABC):
+
+    def __init__(self, type):
+        self._type = type
 
     @abstractmethod
     def create(self):
         pass
 
 
-class WinButton(AbstractButton):
+class Letter(Cargo):
     def __init__(self):
-        super().__init__("Windows")
+        super().__init__("Letter")
 
     def create(self):
-        print("Button element for Windows was created")
+        print("Description for letter!")
 
 
-class WinCheckBox(AbstractCheckBox):
+class SmallOffice(Office):
     def __init__(self):
-        super().__init__("Windows")
+        super().__init__("Letter")
 
     def create(self):
-        print("CheckBox element for Windows was created")
+        print("Small office processing order!")
 
 
-class MacButton(AbstractButton):
+class Parcel(Cargo):
     def __init__(self):
-        super().__init__("MacOS")
+        super().__init__("Parcel")
 
     def create(self):
-        print("Button element for MacOS was created")
+        print("Description for parcel!")
 
 
-class MacCheckBox(AbstractCheckBox):
+class LargeOffice(Office):
     def __init__(self):
-        super().__init__("MacOS")
+        super().__init__("Parcel")
 
     def create(self):
-        print("CheckBox element for MacOS was created")
+        print("Large office processing order!")
 
 
-class AbstractFactory(ABC):
+class OrderFactory(ABC):
     @abstractmethod
-    def get_button(self):
+    def get_cargo(self):
         pass
 
     @abstractmethod
-    def get_checkbox(self):
+    def get_office(self):
         pass
 
 
-class WinFactory(AbstractFactory):
-    def get_button(self):
-        return WinButton()
+class LetterFactory(OrderFactory):
+    def get_cargo(self):
+        return Letter()
 
-    def get_checkbox(self):
-        return WinCheckBox()
+    def get_office(self):
+        return SmallOffice()
 
 
-class MacFactory(AbstractFactory):
-    def get_button(self):
-        return MacButton()
+class ParcelFactory(OrderFactory):
+    def get_cargo(self):
+        return Parcel()
 
-    def get_checkbox(self):
-        return MacCheckBox()
+    def get_office(self):
+        return LargeOffice()
 
 
 class Application:
-    def __init__(self, factory: AbstractFactory):
+    def __init__(self, factory: OrderFactory):
         self.__factory = factory
 
     def get_checkbox(self):
-        return self.__factory().get_checkbox().create()
+        return self.__factory().get_office().create()
 
     def get_button(self):
-        return self.__factory().get_button().create()
+        return self.__factory().get_cargo().create()
 
 
 if __name__ == "__main__":
-    win = Application(WinFactory)
+    win = Application(LetterFactory)
     win.get_checkbox()
     win.get_button()
 
-    mac = Application(MacFactory)
+    mac = Application(ParcelFactory)
     mac.get_checkbox()
     mac.get_button()

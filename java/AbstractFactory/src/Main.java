@@ -1,13 +1,17 @@
 public class Main {
     public static void main(String[] args) {
-        scheduleClass(new LabClassFactory(), "GOF Patterns", 343);
-        scheduleClass(new LectureClassFactory(), "GOF Patterns", 343);
-    }
+        OrderFactory orderFactory = new LetterFactory();
+        Cargo cargo = orderFactory.getCargo();
+        Client client = orderFactory.getClient();
+        Office office = orderFactory.getOffice();
 
-    public static void scheduleClass(AbstractFactory factory, String subject, int group) {
-        var uClass = factory.createClass(subject, group);
-        var log = factory.createLog();
-        uClass.notifyAttendee();
-        log.prepareLog();
+        System.out.println("Start");
+
+        cargo.showDescription();
+        client.payment();
+        office.processingOrder();
+
+        System.out.println("Finish!");
+
     }
 }
