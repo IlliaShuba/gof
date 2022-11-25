@@ -17,29 +17,26 @@ class SingletonMeta(type):
         return cls._instances[cls]
 
 
-class DB(metaclass=SingletonMeta):
+class ThreadSafeStudentDao(metaclass=SingletonMeta):
     db: array = None
 
     def __init__(self) -> None:
         self.db = []
 
-    def save_user(self, user: str):
-        self.db.append(user)
+    def save_student(self, student: str):
+        self.db.append(student)
 
-    def delete_user(self, user: str):
-        self.db.remove(user)
-
-    def get_all_users(self):
+    def get_all_student(self):
         return self.db
 
 
-def test_singleton(user: str) -> None:
-    DB().save_user(user)
-    print(DB().get_all_users())
+def test_singleton(student: str) -> None:
+    ThreadSafeStudentDao().save_student(student)
+    print(ThreadSafeStudentDao().get_all_student())
 
 
 if __name__ == "__main__":
-    process1 = Thread(target=test_singleton, args="Ivan")
-    process2 = Thread(target=test_singleton, args="Denis")
+    process1 = Thread(target=test_singleton, args=("Ivan",))
+    process2 = Thread(target=test_singleton, args=("Denis",))
     process1.start()
     process2.start()

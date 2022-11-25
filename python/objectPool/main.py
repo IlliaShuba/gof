@@ -41,3 +41,4 @@ if __name__ == '__main__':
     order2 = pool.get_order()
     order3 = pool.get_order()
     pool.release_order(order1)
+    order4 = pool.get_order()

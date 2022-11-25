@@ -3,7 +3,7 @@ import java.util.Set;
 
 public class Singleton {
     private static Singleton INSTANCE;
-    private Set<String> db; //db simulator
+    private Set<String> db;
 
     private Singleton() {
         db = new HashSet<>();
