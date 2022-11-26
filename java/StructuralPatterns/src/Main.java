@@ -1,9 +1,13 @@
 import Adapter.Adapter;
 import Adapter.Database;
+import Composite.Client;
+import Composite.Letter;
+import Composite.Order;
+import Composite.Parcel;
 
 public class Main {
     public static void main(String[] args) {
-        Main.Adapter();
+        Main.Composite();
     }
 
     public static void Adapter() {
@@ -13,5 +17,17 @@ public class Main {
         database.update();
         database.select();
         database.remove();
+    }
+
+    public static void Composite() {
+        Client client = new Client();
+
+        Order firstOrder = new Parcel();
+        Order secondOrder = new Letter();
+
+        client.addOrder(firstOrder);
+        client.addOrder(secondOrder);
+
+        client.showOrder();
     }
 }
