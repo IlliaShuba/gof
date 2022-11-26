@@ -3,14 +3,16 @@ import Adapter.Database;
 import Composite.*;
 import Bridge.*;
 import Decorator.*;
-import Decorator.Order;
 import Facade.*;
+import Flyweight.Order;
+import Flyweight.OrderFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Main {
-    public static void main(String[] args) {
-        Main.Facade();
-    }
+    public static void main(String[] args) {Main.Flyweight();}
 
     public static void Adapter() {
         Database database = new Adapter();
@@ -42,12 +44,25 @@ public class Main {
         client.showOrder();
     }
     public static void Decorator(){
-        Order order = new Decorator.Parcel(new QuickOrder());
+        Decorator.Order order = new Decorator.Parcel(new QuickOrder());
         order.delivery();
     }
-
     public static void Facade(){
         Workflow workflow = new Workflow();
         workflow.process();
+    }
+    public static void Flyweight(){
+        OrderFactory orderFactory = new OrderFactory();
+
+        List<Order> orders = new ArrayList<>();
+
+        orders.add(orderFactory.getOrderByType("letter"));
+        orders.add(orderFactory.getOrderByType("letter"));
+        orders.add(orderFactory.getOrderByType("parcel"));
+        orders.add(orderFactory.getOrderByType("parcel"));
+
+        for(Order order: orders){
+            order.delivery();
+        }
     }
 }
