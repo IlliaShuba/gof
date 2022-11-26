@@ -6,13 +6,15 @@ import Decorator.*;
 import Facade.*;
 import Flyweight.Order;
 import Flyweight.OrderFactory;
+import Proxy.Project;
+import Proxy.ProxyProject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class Main {
-    public static void main(String[] args) {Main.Flyweight();}
+    public static void main(String[] args) {Main.Proxy();}
 
     public static void Adapter() {
         Database database = new Adapter();
@@ -64,5 +66,10 @@ public class Main {
         for(Order order: orders){
             order.delivery();
         }
+    }
+
+    public static void Proxy(){
+        Project project = new ProxyProject("https://www.github.com/erere/realProject");
+        project.run();
     }
 }
