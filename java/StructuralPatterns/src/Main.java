@@ -1,12 +1,14 @@
 import Adapter.Adapter;
 import Adapter.Database;
 import Composite.*;
-import Composite.Order;
 import Bridge.*;
+import Decorator.*;
+import Decorator.Order;
+
 
 public class Main {
     public static void main(String[] args) {
-        Main.Bridge();
+        Main.Decorator();
     }
 
     public static void Adapter() {
@@ -17,7 +19,6 @@ public class Main {
         database.select();
         database.remove();
     }
-
     public static void Bridge(){
         Office[] offices = {
                 new LargeOffice(new Bridge.Letter()),
@@ -28,16 +29,19 @@ public class Main {
             office.processingOrder();
         }
     }
-
     public static void Composite() {
         Client client = new Client();
 
-        Order firstOrder = new Composite.Parcel();
-        Order secondOrder = new Composite.Letter();
+        Composite.Order firstOrder = new Composite.Parcel();
+        Composite.Order secondOrder = new Composite.Letter();
 
         client.addOrder(firstOrder);
         client.addOrder(secondOrder);
 
         client.showOrder();
+    }
+    public static void Decorator(){
+        Order order = new Decorator.Parcel(new QuickOrder());
+        order.delivery();
     }
 }
