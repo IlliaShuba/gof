@@ -4,11 +4,12 @@ import Composite.*;
 import Bridge.*;
 import Decorator.*;
 import Decorator.Order;
+import Facade.*;
 
 
 public class Main {
     public static void main(String[] args) {
-        Main.Decorator();
+        Main.Facade();
     }
 
     public static void Adapter() {
@@ -43,5 +44,10 @@ public class Main {
     public static void Decorator(){
         Order order = new Decorator.Parcel(new QuickOrder());
         order.delivery();
+    }
+
+    public static void Facade(){
+        Workflow workflow = new Workflow();
+        workflow.process();
     }
 }

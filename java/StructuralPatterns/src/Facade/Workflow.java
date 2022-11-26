@@ -1,13 +1,13 @@
 package Facade;
 
 public class Workflow {
-    Developer developer = new Developer();
-    Job job = new Job();
-    BugTracker bugTracker = new BugTracker();
+    Courier courier = new Courier();
+    Worker worker = new Worker();
+    Order order = new Order();
 
-    public void solveProblems() {
-        job.doJob();
-        bugTracker.startSprint();
-        developer.foJobBeforeDeadline(bugTracker);
+    public void process() {
+        worker.packing();
+        order.start();
+        courier.deliver(order);
     }
 }
