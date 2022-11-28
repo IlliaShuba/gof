@@ -1,5 +1,7 @@
 package Bridge;
 
+import common.Order;
+
 public class SmallOffice extends Office {
     public SmallOffice(Order order) {
         super(order);

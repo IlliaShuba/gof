@@ -3,7 +3,7 @@ package Facade;
 public class Workflow {
     Courier courier = new Courier();
     Worker worker = new Worker();
-    Order order = new Order();
+    FacadeOrder order = new FacadeOrder();
 
     public void process() {
         worker.packing();

@@ -1,8 +1,10 @@
 package Decorator;
 
-public class Parcel extends OrderDecorator {
+import common.Order;
 
-    public Parcel(Order order) {
+public class DecoratorParcel extends OrderDecorator {
+
+    public DecoratorParcel(Order order) {
         super(order);
     }
 

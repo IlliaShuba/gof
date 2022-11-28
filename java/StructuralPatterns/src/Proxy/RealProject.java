@@ -8,11 +8,9 @@ public class RealProject implements Project {
         load();
 
     }
-
     public void load() {
         System.out.println("Loading project from" + url + "...");
     }
-
     @Override
     public void run() {
         System.out.println("Running project" + url + "...");

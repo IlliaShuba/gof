@@ -1,5 +1,7 @@
 package Bridge;
 
+import common.Order;
+
 public abstract class Office {
     protected Order order;
 

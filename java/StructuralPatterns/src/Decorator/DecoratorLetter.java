@@ -1,7 +1,9 @@
 package Decorator;
 
-public class Letter extends OrderDecorator {
-    public Letter(Order order) {
+import common.Order;
+
+public class DecoratorLetter extends OrderDecorator {
+    public DecoratorLetter(Order order) {
         super(order);
     }
 

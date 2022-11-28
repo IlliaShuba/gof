@@ -1,4 +1,4 @@
-package Flyweight;
+package common;
 
 public class Letter implements Order {
     @Override
@@ -6,3 +6,4 @@ public class Letter implements Order {
         System.out.println("Letter delivery...");
     }
 }
+

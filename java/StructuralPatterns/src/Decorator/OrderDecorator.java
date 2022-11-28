@@ -1,5 +1,7 @@
 package Decorator;
 
+import common.Order;
+
 public class OrderDecorator implements Order {
     Order order;
 

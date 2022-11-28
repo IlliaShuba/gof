@@ -1,13 +1,16 @@
 import Adapter.Adapter;
 import Adapter.Database;
+import common.Order;
+import common.Letter;
+import common.Parcel;
 import Composite.*;
 import Bridge.*;
 import Decorator.*;
 import Facade.*;
-import Flyweight.Order;
 import Flyweight.OrderFactory;
 import Proxy.Project;
 import Proxy.ProxyProject;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +29,8 @@ public class Main {
     }
     public static void Bridge(){
         Office[] offices = {
-                new LargeOffice(new Bridge.Letter()),
-                new SmallOffice(new Bridge.Parcel())
+                new LargeOffice(new Letter()),
+                new SmallOffice(new Parcel())
         };
 
         for(Office office: offices) {
@@ -37,8 +40,8 @@ public class Main {
     public static void Composite() {
         Client client = new Client();
 
-        Composite.Order firstOrder = new Composite.Parcel();
-        Composite.Order secondOrder = new Composite.Letter();
+        Order firstOrder = new Parcel();
+        Order secondOrder = new Letter();
 
         client.addOrder(firstOrder);
         client.addOrder(secondOrder);
@@ -46,7 +49,7 @@ public class Main {
         client.showOrder();
     }
     public static void Decorator(){
-        Decorator.Order order = new Decorator.Parcel(new QuickOrder());
+        Order order = new DecoratorParcel(new QuickOrder());
         order.delivery();
     }
     public static void Facade(){
@@ -67,7 +70,6 @@ public class Main {
             order.delivery();
         }
     }
-
     public static void Proxy(){
         Project project = new ProxyProject("https://www.github.com/erere/realProject");
         project.run();

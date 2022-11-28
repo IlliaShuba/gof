@@ -1,6 +1,6 @@
 package Facade;
 
-public class Order {
+public class FacadeOrder {
     private boolean isDelivered;
 
     public boolean isDelivered() {

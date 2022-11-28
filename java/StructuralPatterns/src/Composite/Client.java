@@ -1,5 +1,7 @@
 package Composite;
 
+import common.Order;
+
 import java.util.ArrayList;
 import java.util.List;
 

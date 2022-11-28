@@ -1,5 +1,9 @@
 package Flyweight;
 
+import common.Letter;
+import common.Order;
+import common.Parcel;
+
 import java.util.HashMap;
 import java.util.Map;
 
