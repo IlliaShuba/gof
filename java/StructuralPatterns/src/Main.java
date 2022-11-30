@@ -71,7 +71,7 @@ public class Main {
         }
     }
     public static void Proxy(){
-        Project project = new ProxyProject("https://www.github.com/erere/realProject");
+        Project project = new ProxyProject("https://www.github.com/some/realProject");
         project.run();
     }
 }
