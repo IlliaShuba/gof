@@ -1,9 +1,11 @@
 import chainOfResponsibities.*;
+import iterator.Iterator;
+import iterator.JavaDeveloper;
 import сommand.*;
 
 public class Main {
     public static void main(String[] args) {
-        Main.Command();
+        Main.Iterator();
     }
 
     public static void Chain() {
@@ -33,5 +35,19 @@ public class Main {
         developer.selectRecord();
         developer.deleteRecord();
     }
+    public static void Iterator() {
+        String[] skills = {"Java", "Python", "PostgreSQL"};
+
+        JavaDeveloper javaDeveloper = new JavaDeveloper("Illia Shuba", skills);
+
+        Iterator iterator = javaDeveloper.getIterator();
+        System.out.println("Developer: " + javaDeveloper.getName());
+        System.out.println("Skills: ");
+
+        while (iterator.hasNext()) {
+            System.out.print(iterator.next().toString() + " ");
+        }
+    }
+
 
 }
