@@ -1,8 +1,9 @@
 import chainOfResponsibities.*;
+import сommand.*;
 
 public class Main {
     public static void main(String[] args) {
-        Main.Chain();
+        Main.Command();
     }
 
     public static void Chain() {
@@ -16,6 +17,21 @@ public class Main {
         reportNotifier.notifyManager("Everything is OK.", Priority.ROUTINE);
         reportNotifier.notifyManager("Something went wrong!", Priority.IMPORTANT);
         reportNotifier.notifyManager("Houston, we`ve had a problem here!!!", Priority.ASAP);
+    }
+    public static void Command() {
+        Database database = new Database();
+
+        Developer developer = new Developer(
+                new InsertCommand(database),
+                new UpdateCommand(database),
+                new SelectCommand(database),
+                new DeleteCommand(database)
+        );
+
+        developer.insertRecord();
+        developer.updateRecord();
+        developer.selectRecord();
+        developer.deleteRecord();
     }
 
 }
