@@ -1,11 +1,15 @@
 import chainOfResponsibities.*;
 import iterator.Iterator;
 import iterator.JavaDeveloper;
+import mediator.Admin;
+import mediator.SimpleTextChat;
+import mediator.SimpleUser;
+import mediator.User;
 import сommand.*;
 
 public class Main {
     public static void main(String[] args) {
-        Main.Iterator();
+        Main.Mediator();
     }
 
     public static void Chain() {
@@ -49,5 +53,19 @@ public class Main {
         }
     }
 
+    public static void Mediator(){
+        SimpleTextChat chat = new SimpleTextChat();
+
+        User admin = new Admin(chat, "Admin");
+        User user1 = new SimpleUser(chat, "User 1");
+        User user2 = new SimpleUser(chat, "User 2");
+
+        chat.setAdmin(admin);
+        chat.addUserToChat(user1);
+        chat.addUserToChat(user2);
+
+        user1.sendMessage("Hello, I am user 1!!!");
+        admin.sendMessage("Roger that. I am admin!");
+    }
 
 }
