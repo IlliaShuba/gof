@@ -11,7 +11,7 @@ class Iterator:
         pass
 
 
-class JavaDeveloper(Collection):
+class PythonDeveloper(Collection):
     name = None
     skills = None
 
@@ -32,11 +32,22 @@ class JavaDeveloper(Collection):
         self.skills = skills
 
     def getIterator(self):
-        return SkillIterator()
+        return SkillIterator(skills)
 
 
 class SkillIterator(Iterator):
     index = 0
+    skills = None
+
+    def __init__(self, skills):
+        self.skills = skills
+
+    def next(self):
+        if self.index < len(self.skills):
+            skill = self.skills[self.index]
+            self.index += 1
+            return skill
+        self.index += 1
 
     def hasNext(self):
         if (self.index < len(self.skills)):
@@ -46,9 +57,9 @@ class SkillIterator(Iterator):
 
 if __name__ == '__main__':
     skills = ["Java", "Python", "PostgreSQL"]
-    javaDeveloper = JavaDeveloper("Illia Shuba", skills)
-    iterator = javaDeveloper.getIterator()
-    print("Developer: " + javaDeveloper.getName())
+    pythonDeveloper = PythonDeveloper("Illia Shuba", skills)
+    iterator = pythonDeveloper.getIterator()
+    print("Developer: " + pythonDeveloper.getName())
     print("Skills: ")
-    while (iterator.hasNext()):
+    while iterator.hasNext():
         print(str(iterator.next()) + " ", end="")

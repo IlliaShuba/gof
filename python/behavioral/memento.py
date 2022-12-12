@@ -1,3 +1,6 @@
+import time
+
+
 class GithudRepo:
     save = None
 
@@ -30,6 +33,9 @@ class Project:
     def load(self, save):
         self.version = save.getVersion()
 
+    def __str__(self):
+        return "Project:\n" + "\nVersion: " + self.version + "\n"
+
 
 if __name__ == "__main__":
     project = Project()
@@ -40,7 +46,7 @@ if __name__ == "__main__":
     github.setSave(project.save())
     print("updating project to version 1.1")
     print("Write poor code...")
-    # Thread.sleep(5000)
+    time.sleep(5)
     project.setVersionAndDate("Version 1.1")
     print(project)
     print("Something went wrong...")

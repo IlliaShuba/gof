@@ -7,8 +7,6 @@ public class SimpleTextChat implements Chat{
     User admin;
     List<User> users = new ArrayList<>();
 
-
-
     public void setAdmin(User admin) {
         this.admin = admin;
     }

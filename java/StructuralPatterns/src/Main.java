@@ -17,7 +17,7 @@ import java.util.List;
 
 
 public class Main {
-    public static void main(String[] args) {Main.Proxy();}
+    public static void main(String[] args) {Main.Flyweight();}
 
     public static void Adapter() {
         Database database = new Adapter();

@@ -34,9 +34,10 @@ class OrderFactory:
         if order is None:
             if type == "letter":
                 print("Create letter...")
+                order = Letter()
             elif type == "parcel":
                 print("Create parcel...")
-            OrderFactory.orders[type] = order
+                order = Parcel()
         return order
 
 
@@ -44,8 +45,11 @@ if __name__ == '__main__':
     order_factory = OrderFactory()
     orders = []
 
-    orders.__add__(order_factory.get_order_by_type("letter"))
-    orders.__add__(order_factory.get_order_by_type("letter"))
+    orders.append(order_factory.get_order_by_type("letter"))
+    orders.append(order_factory.get_order_by_type("letter"))
+
+    orders.append(order_factory.get_order_by_type("parcel"))
+    orders.append(order_factory.get_order_by_type("parcel"))
 
     for order in orders:
         order.delivery()

@@ -37,6 +37,7 @@ class Letter(OrderDecorator):
         super(self).delivery()
         print(self.show_info())
 
+
 class Parcel(OrderDecorator):
 
     def __init__(self, order: Order):
@@ -47,8 +48,7 @@ class Parcel(OrderDecorator):
         return "Parcel"
 
     def delivery(self):
-        super(self).delivery()
-        print(self.show_description())
+        print("Delivery quick order" + self.show_description())
 
 
 if __name__ == '__main__':
